@@ -1,2 +1,6 @@
 # datamining_project
 In this study on the 2024 and 2025 World Happiness Index, we first gathered a wide - ranging dataset covering economic, social, and health - related factors. Then, we created visual maps and charts for top and bottom countries to spot patterns. Next, we compared scores between the two years to identify trends. Finally, we used statistical methods like random sampling in sub - analyses for robust conclusions, aiming to objectively understand global happiness trends. 
+
+
+specific operation
+Run all data and code in the same directory
