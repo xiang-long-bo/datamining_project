@@ -6,11 +6,10 @@ Author
 Longbo Xiang
 
 Abstract  
-This study analyzes the World Happiness Index data from 2024 to 2025 to explore trends in global happiness levels, regional disparities, and influencing factors. Using data preprocessing techniques (cleaning, transformation, feature selection) and a Random Forest regression model, the research identifies key drivers of happiness scores and predicts 2025 values. Findings reveal consistent high happiness in Nordic and Western countries, low scores in conflict-ridden regions, and significant variation in Asia and Africa. The model demonstrates moderate predictive performance, highlighting the importance of economic stability, social support, and health expectancy. Future research could incorporate real-time data and expand cultural factors.  
-
+This study analyzes the World Happiness Index data from 2024 to 2025 to explore trends in global happiness levels, regional disparities, and influencing factors. Using data preprocessing techniques (cleaning, transformation, feature selection) and machine learning models (Random Forest, Linear Regression, SVM, XGBoost), the research identifies key drivers of happiness scores and predicts 2025 values. Findings reveal consistent high happiness in Nordic and Western countries, low scores in conflict-ridden regions, and significant variation in Asia and Africa. Among models, XGBoost demonstrates the best predictive performance (R² = 0.99), highlighting the critical role of economic stability, social support, and health expectancy. Future research could integrate real-time data and cultural factors to enhance model accuracy.
 
 Rationale  
-Understanding happiness trends is critical for policymakers to prioritize well-being amid global challenges like economic instability and social unrest. This study provides evidence-based insights to guide policy interventions and resource allocation, contributing to sustainable development goals (SDGs) focused on quality of life.  
+Understanding happiness trends is critical for policymakers to prioritize well-being amid global challenges like economic instability and social unrest. This study provides evidence-based insights to guide policy interventions and resource allocation, contributing to sustainable development goals (SDGs) focused on quality of life. By comparing multiple predictive models, the research offers a robust framework for identifying effective strategies to enhance happiness metrics.
 
 
 Research Question  
@@ -30,11 +29,17 @@ Methodology
    Transformation: Corrected formatting issues (e.g., commas in numeric fields) and converted columns to appropriate data types.  
    Feature Selection: Retained features with Spearman correlation > 0.2 with happiness scores (excluding "Generosity" due to low correlation).  
    Standardization: Used `StandardScaler` to normalize feature scales.  
-
-2. Model Development:  
-   Algorithm: Random Forest Regressor with 100 estimators.  
-   Training: 80% training set, 20% test set (stratified by year, `random_state=42` for reproducibility).  
-   Evaluation: Mean Squared Error (MSE) and R² score to measure prediction accuracy.  
+2.Data visualization
+3. Model Development:  
+Algorithms Compared:
+       Random Forest Regressor
+       Linear Regression
+       SVM (with StandardScaler pipeline)
+       XGBoost Regressor
+Training:
+       80% training set, 20% test set (stratified by year, random_state=42 for reproducibility).
+Evaluation:
+        Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and R² score.
 
 
 Results  
@@ -44,16 +49,23 @@ Results
    Asia: Mixed results (e.g., Israel and Australia in top 10; South Asian countries mid-range).  
 
 2. Model Performance:  
-   MSE: 0.32 (lower error indicates better fit).  
-   R²: 0.78 (model explains 78% of happiness score variance).  
-   Key predictors: Economic output (GDP per capita, ρ=0.82), social support (ρ=0.79), and healthy life expectancy (ρ=0.75) showed strongest correlations.  
+Model Performance Comparison
+Model	MSE	RMSE	MAE	R²
+Random Forest	56420.87	237.53	132.45	0.9847
+Linear Regression	72189.32	268.68	154.21	0.9712
+SVM	4082213.80	2020.45	710.21	-0.109
+XGBoost	36117.96	190.05	56.59	0.990
+
+Key Predictors: Economic output (ρ=0.82), social support (ρ=0.79), and healthy life expectancy (ρ=0.75) showed strongest correlations with happiness scores.
+Feature Importance (Random Forest)
+Top Factors: Economy (35%), Social Support (32%), Healthy Life Expectancy (18%).
+Minor Factors: Freedom (10%), Perceptions of Corruption (5%), Year (0.1%).
 
 
 Next Steps  
-1. Incorporate real-time data (e.g., 2025–2026 surveys) to validate model accuracy.  
-2. Explore cultural factors (e.g., religion, social norms) and environmental indicators (e.g., pollution) as additional predictors.  
-3. Conduct case studies on countries with significant score fluctuations (e.g., analyze policy changes in Iceland or New Zealand).  
-
+Real-time Data Integration: Validate model accuracy with 2025–2026 survey data.
+Cultural and Environmental Factors: Explore religion, social norms, and pollution as additional predictors.
+Case Studies: Analyze policy changes in countries with score fluctuations (e.g., Iceland, New Zealand).
 
 Conclusion  
 Positive Findings: The model effectively identifies economic and social determinants of happiness, and Nordic/Western countries serve as benchmarks for well-being policies.  
